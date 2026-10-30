@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowTab</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header class="top-section">
+      <div class="greeting" id="greeting"></div>
+      <div class="clock-wrapper">
+        <div class="clock" id="clock"></div>
+        <div class="date" id="dateDisplay"></div>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="card tasks-card">
+        <div class="card-header">
+          <h2>Tasks</h2>
+          <span class="task-count" id="taskCount">0</span>
+        </div>
+        <div class="task-input-row">
+          <input type="text" id="taskInput" placeholder="Add a task..." autocomplete="off">
+          <button id="addTaskBtn" class="add-btn">+</button>
+        </div>
+        <ul class="task-list" id="taskList"></ul>
+        <div class="task-footer" id="taskFooter" style="display: none;">
+          <button id="clearDone" class="clear-btn">Clear completed</button>
+        </div>
+      </section>
+
+      <section class="card focus-card">
+        <div class="card-header">
+          <h2>Focus Timer</h2>
+        </div>
+        <div class="timer-display">
+          <span class="timer-time" id="timerDisplay">25:00</span>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-btn" id="timerStartBtn">Start</button>
+          <button class="timer-btn timer-secondary" id="timerResetBtn">Reset</button>
+        </div>
+        <div class="timer-presets">
+          <button class="preset-btn active" data-minutes="25">25m</button>
+          <button class="preset-btn" data-minutes="15">15m</button>
+          <button class="preset-btn" data-minutes="5">5m</button>
+          <button class="preset-btn" data-minutes="45">45m</button>
+        </div>
+        <div class="focus-stats">
+          <div class="stat">
+            <span class="stat-value" id="sessionsToday">0</span>
+            <span class="stat-label">sessions today</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="totalFocusTime">0m</span>
+            <span class="stat-label">focused</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card links-card">
+        <div class="card-header">
+          <h2>Quick Links</h2>
+          <button class="add-link-btn" id="addLinkBtn">+</button>
+        </div>
+        <div class="links-grid" id="linksGrid"></div>
+        <div class="add-link-form" id="addLinkForm" style="display: none;">
+          <input type="text" id="linkName" placeholder="Name" autocomplete="off">
+          <input type="url" id="linkUrl" placeholder="https://..." autocomplete="off">
+          <div class="form-actions">
+            <button class="save-link-btn" id="saveLinkBtn">Save</button>
+            <button class="cancel-link-btn" id="cancelLinkBtn">Cancel</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card notes-card">
+        <div class="card-header">
+          <h2>Quick Note</h2>
+          <span class="save-indicator" id="saveIndicator">Saved</span>
+        </div>
+        <textarea id="quickNote" placeholder="Jot something down..."></textarea>
+      </section>
+    </main>
+
+    <footer class="bottom-bar">
+      <div class="quote" id="quoteDisplay"></div>
+      <div class="settings-toggle">
+        <button id="settingsBtn" class="settings-btn" title="Settings">&#9881;</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="settings-panel" id="settingsPanel" style="display: none;">
+    <div class="settings-overlay" id="settingsOverlay"></div>
+    <div class="settings-content">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button class="settings-close" id="settingsClose">&times;</button>
+      </div>
+      <div class="settings-body">
+        <div class="setting-group">
+          <label>Your Name</label>
+          <input type="text" id="userName" placeholder="Enter your name" autocomplete="off">
+        </div>
+        <div class="setting-group">
+          <label>Clock Format</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-format="12">12h</button>
+            <button class="toggle-btn" data-format="24">24h</button>
+          </div>
+        </div>
+        <div class="setting-group">
+          <label>Background</label>
+          <div class="color-options">
+            <button class="color-btn active" data-bg="dark" style="background: #0a0a0f;" title="Dark"></button>
+            <button class="color-btn" data-bg="midnight" style="background: #0d1117;" title="Midnight"></button>
+            <button class="color-btn" data-bg="deep" style="background: #1a1035;" title="Deep Purple"></button>
+            <button class="color-btn" data-bg="ocean" style="background: #0a192f;" title="Ocean"></button>
+          </div>
+        </div>
+        <div class="setting-group">
+          <button class="danger-btn" id="resetAllBtn">Reset All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
